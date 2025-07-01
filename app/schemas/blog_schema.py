@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from datetime import datetime
 from app.schemas.user_schema import UserResponse
 
@@ -11,5 +11,4 @@ class BlogResponse(BlogBase):
     created_at: datetime
     owner: UserResponse
     
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
